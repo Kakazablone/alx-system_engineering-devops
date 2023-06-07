@@ -12,3 +12,4 @@ rm -r /tmp/my_first_directory - Deleting a directory
 cd - -move to the previous directory
 
 file /tmp/iamafile - prints out iamafile when run
+ln -s /bin/ls __ls__  - Create a symbolic link
