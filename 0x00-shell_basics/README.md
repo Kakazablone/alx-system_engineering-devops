@@ -11,5 +11,6 @@ rm /tmp/my_first_directory/betty - To remove the file betty
 rm -r /tmp/my_first_directory - Deleting a directory
 cd - -move to the previous directory
 
-file /tmp/iamafile - prints out iamafile when run
-ln -s /bin/ls __ls__  - Create a symbolic link
+file /tmp/iamafile - prints out iamafile when vim -r README.md
+
+cp -a *html ../ | uniq - Copies all html files from working to parent dir (working)
