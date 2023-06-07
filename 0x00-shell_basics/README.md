@@ -4,4 +4,4 @@
 cd - changes the working directory to the user’s home directory
 ls -l - Display current directory contents in a long format
 ls -la - Display current directory contents, including hidden files (starting with .)
-ls  --numeric-uid-gid -Display in long format  with user and group IDs displayed numerically
+ls  --numeric-uid-gid --include='.*' -Display in long format  with user and group IDs displayed numerically
