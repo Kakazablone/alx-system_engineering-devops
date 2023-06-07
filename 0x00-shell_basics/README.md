@@ -9,3 +9,4 @@ mkdir /tmp/my_first_directory - creates a directory named my_first_directory in 
 mv /tmp/betty /tmp/my_first_directory -Move file from one directory to another
 rm /tmp/my_first_directory/betty - To remove the file betty
 rm -r /tmp/my_first_directory - Deleting a directory
+cd .. -move to the previous directory
