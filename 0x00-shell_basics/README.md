@@ -10,7 +10,7 @@ mv /tmp/betty /tmp/my_first_directory -Move file from one directory to another
 rm /tmp/my_first_directory/betty - To remove the file betty
 rm -r /tmp/my_first_directory - Deleting a directory
 cd - -move to the previous directory
-ls -la ../boot - list files in that order
+ls -la . ./ /boot - list files in that order
 file /tmp/iamafile - prints out iamafile when vim -r README.md
 
 cp -a *html ../ | uniq - Copies all html files from working to parent dir (working)
