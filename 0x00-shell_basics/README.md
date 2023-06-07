@@ -14,3 +14,4 @@ ls -la . .. /boot - list files in that order
 file /tmp/iamafile - prints out iamafile when vim -r README.md
 
 cp -a *html ../ | uniq - Copies all html files from working to parent dir (working)
+mv [[:upper:]]* /tmp/u - Move all files beginning with an uppercase to u
