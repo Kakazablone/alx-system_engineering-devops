@@ -16,3 +16,4 @@ file /tmp/iamafile - prints out iamafile when vim -r README.md
 cp -a *html ../ | uniq - Copies all html files from working to parent dir (working)
 mv [[:upper:]]* /tmp/u - Move all files beginning with an uppercase to u
 rm -f *~ - Remove all files that end in ~ inside the current dir.
+mkdir -p welcome/to/school - creates the three directories welcome wlecome to and welcome to school
