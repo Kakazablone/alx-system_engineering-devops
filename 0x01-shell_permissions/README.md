@@ -8,7 +8,7 @@ chmod u+x,g+x,o+r hello :adds execute permission to the owner and the group owne
 chmod ugo+x hello :  adds execution permission to the owner, the group owner and the other users, to the file hello
 chmod 007 hello : Grants only the others permissions
 chmod 753 hello : specific permissions
-sudo chmod --reference= hello olleh : assigns the same permissions in hello tp olleh
+sudo chmod -Rf hello olleh : assigns the same permissions in hello tp olleh
 chmod -R a+x : adds execute permission to all subdirectories of the current directory for the owner, the group owner and all other users. Regular files should not be changed.
 sudo mkdir -m 751 my_dir : Make directory and assign permissions at the same time
 chgrp school hello :Change group owner
