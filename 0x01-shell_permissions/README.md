@@ -15,3 +15,4 @@ chgrp school hello :Change group owner
 chown -R vincent:staff . change owner and group owner in current directory
 chown -h vincent:staff _hello changes the owner and the group owner of _hello to vincent and staff respectively
 chown --from=guillaume betty hello :a script that changes the owner of the file hello to betty only if it is owned by the user guillaume
+telnet :a network protocol that allows you to connect to a remote computer and interact with it as if you were sitting at that computer
