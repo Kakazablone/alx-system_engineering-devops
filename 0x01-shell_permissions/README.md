@@ -8,3 +8,4 @@ chmod u+x,g+x,o+r hello :adds execute permission to the owner and the group owne
 chmod 751 hello :  adds execution permission to the owner, the group owner and the other users, to the file hello
 chmod 007 hello : Grants only the others permissions
 chmod 753 hello : specific permissions
+chmod -Rf hello olleh : assigns the same permissions in hello tp olleh
