@@ -13,4 +13,4 @@ chmod -R ugo+X : adds execute permission to all subdirectories of the current di
 sudo mkdir -m 751 my_dir : Make directory and assign permissions at the same time
 chgrp school hello :Change group owner
 chown -R vincent:staff . change owner and group owner in current directory
-chown -h vincent _hello:staff : changes the owner and the group owner of _hello to vincent and staff respectively
+chown -h vincent:staff _hello changes the owner and the group owner of _hello to vincent and staff respectively
