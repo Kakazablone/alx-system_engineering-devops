@@ -11,10 +11,11 @@ rm /tmp/my_first_directory/betty - To remove the file betty
 rm -r /tmp/my_first_directory - Deleting a directory
 cd - -move to the previous directory
 ls -la . .. /boot - list files in that order
-file /tmp/iamafile - prints out iamafile when vim -r README.md
-
+file /tmp/iamafile - prints the type of the file named iamafile. The file iamafile will be in the /tmp directory
+ln -s /bin/ls __ls__ :Create a symbolic link to /bin/ls, named __ls__. The symbolic link should be created in the current working directory
 cp -a *html ../ | uniq - Copies all html files from working to parent dir (working)
 mv [[:upper:]]* /tmp/u - Move all files beginning with an uppercase to u
 rm -f *~ - Remove all files that end in ~ inside the current dir.
 mkdir -p welcome/to/school - creates the three directories welcome wlecome to and welcome to school
-ls -xamp - lists all the files and directories of the current directory, separated by commas
+ls -xamp - lists all the files and directories of the current directory, separated by comma
+0 string school & !:mime School then run file -C -m school.mgc....the first two lines will be in the file name school.mgc
