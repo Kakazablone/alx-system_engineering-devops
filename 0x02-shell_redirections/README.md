@@ -21,3 +21,4 @@ grep '^[A-Za-z]' /etc/ssh/sshd_config : Display all lines of the file /etc/ssh/s
 
 
 rev <input> : Write a script that reverse its input.
+sort /etc/passwd : Write a script that displays all users and their home directories, sorted by users.
