@@ -1,0 +1,2 @@
+#!/bin/bash
+find -mindepth -type f -empty -type -o d -empty | ls -a1
