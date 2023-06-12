@@ -12,3 +12,4 @@ find . -name '*.js' -type f -delete : Write a script that deletes all the regula
 ls -t1 | head -n 10 :Create a script that displays the 10 newest files in the current directory. One file per line Sorted from the newest to the oldest
 sort | uniq -u : Create a script that takes a list of words as input and prints only words that appear exactly once. Input format: One line, one word Output format: One line, one word Words should be sorted
 grep root /etc/passwd : Display lines containing the pattern “root” from the file /etc/passwd
+grep -c bin /etc/passwd : Display the number of lines that contain the pattern “bin” in the file /etc/passwd
