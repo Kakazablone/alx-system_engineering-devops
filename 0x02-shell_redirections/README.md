@@ -10,3 +10,4 @@ ls -la >> ls_cwd_content : Write a script that writes into the file ls_cwd_conte
 echo -en "" | tail --lines=1 iacta >> iacta  : Write a script that duplicates the last line of the file iacta
 find . -name '*.js' -type f -delete : Write a script that deletes all the regular files (not the directories) with a .js extension that are present in the current directory and all its subfolders                find -mindepth 1 -type d | wc -l : Write a script that counts the number of directories and sub-directories in the current directory
 ls -t1 | head -n 10 :Create a script that displays the 10 newest files in the current directory. One file per line Sorted from the newest to the oldest
+sort | uniq -u : Create a script that takes a list of words as input and prints only words that appear exactly once. Input format: One line, one word Output format: One line, one word Words should be sorted
