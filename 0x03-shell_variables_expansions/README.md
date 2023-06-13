@@ -10,3 +10,4 @@ echo $((128 + $TRUEKNOWLEDGE)) : Write a script that prints the result of the ad
 echo $(($POWER/$DIVIDE)) : Write a script that prints the result of POWER divided by DIVIDE, followed by a new line.
 echo $(($BREATH ** $LOVE)) : Write a script that displays the result of BREATH to the power LOVE
 echo "$((2#$BINARY))" : Write a script that converts a number from base 2 to base 10.
+printf "%s\n" {a..z}{a..z} | grep -v "oo" : Create a script that prints all possible combinations of two letters, except oo.
