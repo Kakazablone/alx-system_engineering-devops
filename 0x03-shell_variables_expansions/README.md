@@ -13,3 +13,5 @@ echo "$((2#$BINARY))" : Write a script that converts a number from base 2 to bas
 printf "%s\n" {a..z}{a..z} | grep -v "oo" : Create a script that prints all possible combinations of two letters, except oo.
 printf "%.2f\n" $NUM:Write a script that prints a number with two decimal places, followed by a new line The number will be stored in the environment variabl
 printf "%x\n" $DECIMAL : Write a script that converts a number from base 10 to base 16.
+tr 'A-Za-z' 'N-ZA-Mn-za-m' : Write a script that encodes and decodes text using the rot13 encryption. Assume ASCII.
+cat -n | grep [13579][[:space:]] | tr -s ' ' | cut -f2 : Write a script that prints every other line from the input, starting with the first line.
