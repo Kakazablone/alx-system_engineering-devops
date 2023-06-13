@@ -4,3 +4,4 @@ export PATH=$PATH:/action :Add /action to the PATH. /action should be the last d
 echo $PATH | tr ':' '\n' | wc -l : Create a script that counts the number of directories in the PATH
 printenv : Create a script that lists environment variables.
 set : Create a script that lists all local variables and environment variables, and functions.
+BEST=School : Create a script that creates a new local variable.
