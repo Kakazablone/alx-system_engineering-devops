@@ -1,5 +1,5 @@
-# A puppet manifest installing flask v 2.1.0 which is a package from pip3.
-package { 'Flask':
-  ensure   => '2.1.0',
-  provider => 'pip3'
+# A puppet manifest installing flask v 2.1.0
+exec { 'install_flask':
+  command => '/usr/bin/pip3 install Flask==2.1.0',
+  path    => ['/usr/bin'],
 }
