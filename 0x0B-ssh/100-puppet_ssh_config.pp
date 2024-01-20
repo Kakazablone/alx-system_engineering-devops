@@ -1,7 +1,7 @@
 file { '/home/samba/.ssh/config':
   ensure  => present,
-  owner   => 'ubuntu',
-  group   => 'ubuntu',
+  owner   => 'samba',
+  group   => 'samba',
   mode    => '0600',
   content => "# SSH client configuration\n
               Host 100.25.102.191
