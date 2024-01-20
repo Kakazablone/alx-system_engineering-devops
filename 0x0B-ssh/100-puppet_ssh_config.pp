@@ -1,4 +1,4 @@
-file { 'home/samba/.ssh/config':
+file { '/home/samba/.ssh/config':
   ensure  => present,
   owner   => 'ubuntu',
   group   => 'ubuntu',
