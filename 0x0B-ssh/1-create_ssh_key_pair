@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 # Bash script that creates an RSA key pair
 
-ssh-keygen -b 4096 -N betty -f school
+F_PATH="$HOME/.ssh/school"
+
+if [ -f "$F_PATH" ]; then
+    exit 1
+fi
+
+ssh-keygen -t rsa -b 4096 -f "$F_PATH" -N "betty" || exit 1
