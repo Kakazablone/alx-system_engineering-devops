@@ -1,6 +1,6 @@
 #Configure ssh client so that you can log in without password
 
-Host 54.174.194.149
+Host 100.25.102.191
     User ubuntu
     SendEnv LANG LC_*
     HashKnownHosts yes
