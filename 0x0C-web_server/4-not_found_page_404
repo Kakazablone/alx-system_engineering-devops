@@ -22,6 +22,5 @@ if ! grep -q "error_page 404 /404.html;" /etc/nginx/sites-enabled/default; then
     sudo sed -i "s#listen 80 default_server;#$Updated_Rule#" /etc/nginx/sites-enabled/default
 fi
 
-
 # Restarting Nginx service
 sudo service nginx restart
