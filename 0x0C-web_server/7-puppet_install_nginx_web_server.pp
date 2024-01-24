@@ -1,25 +1,18 @@
-# Install Nginx package
+# Automating project requirements using Puppet
+
 package { 'nginx':
   ensure => installed,
 }
 
-# Ensure Nginx service is running
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+}
+
 service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
 }
 
-# Create the virtual host configuration
-nginx::resource::vhost { 'default':
-  ensure       => present,
-  www_root     => '/var/www/html',
-  listen_port  => '80',
-}
-
-# Add the rewrite rule
-nginx::resource::rewrite { 'redirect_rule':
-  vhost     => 'default',
-  match     => '^/redirect_me',
-  target    => 'https://www.github.com/Kakazablone',
-  redirect  => 'permanent',
+exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/www.github.com\/Kakazablone\/;\\n\\t}/" /etc/nginx/sites-available/default':
+  provider => shell,
 }
