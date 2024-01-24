@@ -12,4 +12,4 @@ Updated_Rule="server_name _;\\n\\trewrite ^/redirect_me https://github.com/Kakaz
 sudo sed -i "s#server_name _;#$Updated_Rule#" /etc/nginx/sites-enabled/default
 
 # Restarting Nginx service
-sudo service nginx restart
+sudo service nginx reload
