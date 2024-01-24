@@ -1,21 +1,25 @@
-#Install and configure an Nginx server using Puppet instead of Bash
-
+# Install Nginx package
 package { 'nginx':
   ensure => installed,
 }
 
+# Ensure Nginx service is running
 service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
 }
 
-file { '/var/www/html/index.html':
-  content => 'Hello World!',
+# Create the virtual host configuration
+nginx::resource::vhost { 'default':
+  ensure       => present,
+  www_root     => '/var/www/html',
+  listen_port  => '80',
 }
 
-file_line { 'install':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-enabled/default',
-  after  => 'listen 80 default_server;',
-  line   => 'rewrite ^/redirect_me https://www.github.com/Kakazablone permanent;',
+# Add the rewrite rule
+nginx::resource::rewrite { 'redirect_rule':
+  vhost     => 'default',
+  match     => '^/redirect_me',
+  target    => 'https://www.github.com/Kakazablone',
+  redirect  => 'permanent',
 }
