@@ -13,6 +13,6 @@ service { 'nginx':
   require => Package['nginx'],
 }
 
-exec { 'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/github.com\/Kakazablone\/;\\n\\t}/" /etc/nginx/sites-available/default',
+exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/github.com\/Kakazablone\/;\\n\\t}/" /etc/nginx/sites-available/default':
   provider => shell
 }
