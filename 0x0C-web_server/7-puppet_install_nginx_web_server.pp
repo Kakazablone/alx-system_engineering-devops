@@ -13,12 +13,16 @@ service { 'nginx':
   require => Package['nginx'],
 }
 
-file { '/etc/nginx/sites-enabled/default':
+file { '/etc/nginx/sites-available/redirect_me':
   ensure  => present,
-  content => "server_name _;\n
-                  location /redirect_me {\n
-                      return 301 https://github.com/Kakazablone;\n
-                      }",
-  require => Service['nginx'],
-  notify  => Service['nginx'],
+  content => 'location /redirect_me {
+                return 301 https://github.com/Kakazablone;
+            }',
+}
+
+file { '/etc/nginx/sites-enabled/redirect_me':
+  ensure => link,
+  target => '/etc/nginx/sites-available/redirect_me',
+  require => File['/etc/nginx/sites-available/redirect_me'],
+  notify => Service['nginx'],
 }
