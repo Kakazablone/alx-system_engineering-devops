@@ -1,26 +1,40 @@
 #!/usr/bin/env bash
-# A Script that configures a new Ubuntu machine to Perform a 301-redirection
+#Managing nginx installation, redirection and 404 error
 
+# Update package information
 sudo apt-get -y update
+
+# Install Nginx
 sudo apt-get install -y nginx
 
+# Start Nginx service
+sudo systemctl start nginx
+
 # Creating an index.html page
-echo "Hello World!" | sudo tee /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+sudo systemctl reload nginx
 
-# Using sed to do a 301 Redirection
-Updated_Rule="server_name _;\\n\\trewrite ^/redirect_me https://github.com/Kakazablone permanent;"
-if ! grep -q "rewrite ^/redirect_me https://github.com/Kakazablone permanent;" /etc/nginx/sites-enabled/default; then
-    sudo sed -i "s#server_name _;#$Updated_Rule#" /etc/nginx/sites-enabled/default
+# Configuring 301 Redirection
+if ! grep -q "location /redirect_me {" /etc/nginx/sites-enabled/default; then
+    sudo sed -i '/server_name _;/a\
+            location /redirect_me {\
+                return 301 https://github.com/Kakazablone;\
+            }' /etc/nginx/sites-enabled/default
+    sudo systemctl reload nginx
 fi
 
-# Custom 404 page that contains the string Ceci n'est pas une page
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+if ! grep -q "location = /404.html {" /etc/nginx/sites-enabled/default; then
+# Creating 404.html page
+    echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+    # Configuring Custom 404 page
+    sudo sed -i '/server_name _;/a\
+            location / {\
+                error_page 404 /404.html;\
+                location = /404.html {\
+                    root /var/www/html;\
+                }\
+            }' /etc/nginx/sites-enabled/default
 
-# Using sed to add the 404 page configuration if it doesn't already exist
-if ! grep -q "error_page 404 /404.html;" /etc/nginx/sites-enabled/default; then
-    Updated_Rule="listen 80 default_server;\\n\terror_page 404 /404.html;\\n\\tlocation = /404.html {\\n\\t\\tinternal;\\n\\t}"
-    sudo sed -i "s#listen 80 default_server;#$Updated_Rule#" /etc/nginx/sites-enabled/default
+    # Reloading Nginx service
+    sudo systemctl reload nginx
 fi
-
-# Restarting Nginx service
-sudo service nginx restart
