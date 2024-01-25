@@ -1,28 +1,24 @@
-# Automating project requirements using Puppet
+# Script to install nginx using puppet
 
-package { 'nginx':
-  ensure => installed,
+package {'nginx':
+  ensure => 'present',
 }
 
-file { '/var/www/html/index.html':
-  content => 'Hello World!',
+exec {'install':
+  command  => 'sudo apt-get update ; sudo apt-get -y install nginx',
+  provider => shell,
 }
 
-service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+exec {'Hello World!':
+  command  => 'echo "Hello World!" | sudo dd status=none of=/var/www/html/index.html',
+  provider => shell,
 }
 
-file { '/etc/nginx/sites-available/redirect_me':
-  ensure  => present,
-  content => 'location /redirect_me {
-                return 301 https://github.com/Kakazablone;
-            }',
+exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/www.youtube.com\/;\\n\\t}/" /etc/nginx/sites-available/default':
+  provider => shell,
 }
 
-file { '/etc/nginx/sites-enabled/redirect_me':
-  ensure => link,
-  target => '/etc/nginx/sites-available/redirect_me',
-  require => File['/etc/nginx/sites-available/redirect_me'],
-  notify => Service['nginx'],
+exec {'run':
+  command  => 'sudo service nginx restart',
+  provider => shell,
 }
