@@ -13,9 +13,12 @@ service { 'nginx':
   require => Package['nginx'],
 }
 
-exec {sudo sed -i '/server_name _;/a'\
-            'location /redirect_me {
-                return 301 https://github.com/Kakazablone;
-            }' /etc/nginx/sites-enabled/default
-  provider => shell
+file { '/etc/nginx/sites-enabled/default':
+  ensure  => present,
+  content => "server_name _;\n
+                  location /redirect_me {\n
+                      return 301 https://github.com/Kakazablone;\n
+                      }",
+  require => Service['nginx'],
+  notify  => Service['nginx'],
 }
