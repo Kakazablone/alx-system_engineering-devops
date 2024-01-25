@@ -16,9 +16,9 @@ sudo systemctl reload nginx
 
 # Configuring 301 Redirection
 if ! grep -q "location /redirect_me {" /etc/nginx/sites-enabled/default; then
-    sudo sed -i '/server_name _;/a\
-            location /redirect_me {\
-                return 301 https://github.com/Kakazablone;\
+    sudo sed -i '/server_name _;/a'\
+            'location /redirect_me {
+                return 301 https://github.com/Kakazablone;
             }' /etc/nginx/sites-enabled/default
     sudo systemctl reload nginx
 fi
@@ -27,12 +27,12 @@ if ! grep -q "location = /404.html {" /etc/nginx/sites-enabled/default; then
 # Creating 404.html page
     echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
     # Configuring Custom 404 page
-    sudo sed -i '/server_name _;/a\
-            location / {\
-                error_page 404 /404.html;\
-                location = /404.html {\
-                    root /var/www/html;\
-                }\
+    sudo sed -i '/server_name _;/a'\
+            'location / {
+                error_page 404 /404.html;
+                location = /404.html {
+                    root /var/www/html;
+                }
             }' /etc/nginx/sites-enabled/default
 
     # Reloading Nginx service
