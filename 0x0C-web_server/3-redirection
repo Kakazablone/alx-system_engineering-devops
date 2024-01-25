@@ -3,18 +3,17 @@
 
 sudo apt-get -y update
 sudo apt-get install -y nginx
+sudo systemctl start nginx
 
 # Creating an index.html page
 echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo systemctl reload nginx
 
 # Using sed to do a 301 Redirection
-# Configuring 301 Redirection
-if ! grep -q "location /redirect_me {" /etc/nginx/sites-enabled/default; then
-    sudo sed -i '/server_name _;/a\
-            location /redirect_me {\
-                return 301 https://github.com/Kakazablone;\
-            }' /etc/nginx/sites-enabled/default
-    sudo systemctl reload nginx
-fi
+sudo sed -i '/server_name _;/a\
+        location /redirect_me {\
+            return 301 https://github.com/Kakazablone;\
+        }' /etc/nginx/sites-enabled/default
+
 # Reload Nginx service
 sudo systemctl reload nginx
