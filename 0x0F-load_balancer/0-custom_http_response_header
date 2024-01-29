@@ -12,7 +12,7 @@ sudo systemctl start nginx
 if ! grep -q "add_header X-Served-By \$hostname;" /etc/nginx/sites-enabled/default; then
 # Configuring Custon Nginx header
 sudo sed -i '/server_name _;/a'\
-        'add_header X-Served-By $hostname;' /etc/nginx/sites-enabled/default
+        'add_header X-Served-By \$hostname;' /etc/nginx/sites-enabled/default
 fi
 
 sudo systemctl restart nginx
