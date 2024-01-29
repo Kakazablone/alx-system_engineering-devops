@@ -1,16 +1,19 @@
-# Use Puppet to automate the task of creating a custom HTTP header response
+#Puppet manifest that install nginx and adds a line to config 
 
-exec {'update':
-  command => '/usr/bin/apt-get update',
-}
--> package {'nginx':
+package { 'nginx':
   ensure => 'present',
 }
--> file_line { 'http_header':
-  path  => '/etc/nginx/nginx.conf',
-  match => 'http {',
-  line  => "http {\n\tadd_header X-Served-By \"${hostname}\";",
+
+exec { 'update_apt_store':
+  command => '/usr/bin/apt-get update',
 }
--> exec {'run':
+
+file_line { 'http_header':
+  path  => '/etc/nginx/nginx.conf',
+  line  => "http {\n\tadd_header X-Served-By \"${hostname}\";",
+  match => 'http {',
+}
+
+exec { 'restart_nginx':
   command => '/usr/sbin/service nginx restart',
 }
