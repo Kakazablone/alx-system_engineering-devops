@@ -14,6 +14,6 @@ service { 'nginx':
 
 # Nginx header
 exec { 'add_custom_nginx_header':
-  command  => "sudo sed -i '47i\\        add_header X-Served-By \$hostname;' /etc/nginx/sites-enabled/default",
-  notify   => Service['nginx'],
+  command  => "sudo sed -i '47i\\        add_header X-Served-By \\\$hostname;' /etc/nginx/sites-enabled/default",
+  require  => Service['nginx'],
 }
