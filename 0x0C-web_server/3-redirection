@@ -12,8 +12,8 @@ sudo systemctl reload nginx
 # Using sed to do a 301 Redirection
 if ! grep -q "location /redirect_me {" /etc/nginx/sites-enabled/default; then
     sudo sed -i '/server_name _;/a'\
-            'location /redirect_me {
-                return 301 https://github.com/Kakazablone;
+            'location /redirect_me {\
+                return 301 https://github.com/Kakazablone;\
             }' /etc/nginx/sites-enabled/default
     # Reload Nginx service
     sudo systemctl reload nginx
