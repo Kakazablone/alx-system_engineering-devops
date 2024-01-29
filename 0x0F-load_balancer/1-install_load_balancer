@@ -17,8 +17,8 @@ frontend load_balancer
 
 backend app_servers
     balance roundrobin
-    server 420276-web-01 100.25.102.191:80
-    server 420276-web-02 100.26.161.26:80
+    server 420276-web-01 100.25.102.191:80 check
+    server 420276-web-02 100.26.161.26:80 check
 "
 
 # Append configurations to haproxy.cfg
