@@ -29,7 +29,7 @@ fi
 
 if ! grep -q "add_header X-Served-By \$hostname;" /etc/nginx/sites-enabled/default; then
 # Configuring Custon Nginx header
-sudo sed -i '6i\        'add_header X-Served-By \$hostname;' /etc/nginx/sites-enabled/default
+sudo sed -i '6i\        add_header X-Served-By \$hostname;' /etc/nginx/sites-enabled/default
 fi
 
 sudo service nginx restart
