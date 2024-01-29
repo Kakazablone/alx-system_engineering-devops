@@ -13,10 +13,7 @@ service { 'nginx':
 }
 
 # Nginx header
-file_line { 'custom_nginx_header':
-  path   => '/etc/nginx/sites-available/default',
-  line   => '        add_header X-Served-By $hostname;',
-  match  => '^.*server_name _;.*$',
-  before => '        location / {',
-  notify => Service['nginx'],
+exec { 'add_custom_nginx_header':
+  command  => "sudo sed -i '47i\\        add_header X-Served-By \$hostname;' /etc/nginx/sites-enabled/default",
+  notify   => Service['nginx'],
 }
