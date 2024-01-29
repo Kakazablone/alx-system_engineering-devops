@@ -10,10 +10,11 @@ service { 'nginx':
   ensure  => 'running',
   enable  => true,
   require => Package['nginx'],
+  notify   => Exec['add_custom_nginx_header'],
 }
 
 # Nginx header
 exec { 'add_custom_nginx_header':
   command  => "sudo sed -i '47i\\        add_header X-Served-By \\\$hostname;' /etc/nginx/sites-enabled/default",
-  require  => Service['nginx'],
+  notify   => Service['nginx'],
 }
