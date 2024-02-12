@@ -7,9 +7,12 @@
 #   ufw-before-output
 #   ufw-before-forward
 #
-
+#Network Address Translation Table Rules
 *nat
 :PREROUTING ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+#The actual port forwarding rule
 -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
 COMMIT
 
