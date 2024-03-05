@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""
-Module that queries the reddit API
-"""
-
+"""Module that queries the reddit API"""
 from requests import get
 
 
