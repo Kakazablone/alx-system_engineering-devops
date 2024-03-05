@@ -17,10 +17,8 @@ def top_ten(subreddit):
     response = get(url, headers=user_agent, params=params,
                    allow_redirects=False)
     results = response.json()
-    """Fetch required data"""
     try:
         rqd_info = results.get('data').get('children')
-        """Filter required data"""
 
         for item in rqd_info:
             print(item.get('data').get('title'))
