@@ -5,7 +5,7 @@ def count_words(subreddit, word_list, after=None, count=None):
         count = {word.lower(): 0 for word in word_list}
 
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    response = requests.get(url, params={'after': after}, headers={'user-agent': 'bhalut'})
+    response = requests.get(url, params={'after': after}, headers={'user-agent': 'VICTORY'})
 
     if response.status_code == 200:
         data = response.json()
