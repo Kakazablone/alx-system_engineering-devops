@@ -14,7 +14,8 @@ def top_ten(subreddit):
     params = {'limit': 10}
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
 
-    response = get(url, headers=user_agent, params=params)
+    response = get(url, headers=user_agent, params=params,
+                   allow_redirects=False)
     results = response.json()
     try:
         rqd_info = results.get('data').get('children')
