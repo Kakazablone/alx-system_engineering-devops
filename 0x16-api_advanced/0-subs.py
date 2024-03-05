@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''Module that tests out the Reddit API'''
-from requests import get
+import requests
 
 
 def number_of_subscribers(subreddit):
@@ -11,7 +11,7 @@ def number_of_subscribers(subreddit):
     if subreddit is None or not isinstance(subreddit, str):
         return 0
     headers = {'User-Agent': 'VICTORY'}
-    response = get(
+    response = requests.get(
         'https://www.reddit.com/r/{}/about.json'.format(str(subreddit)),
         headers=headers,
         allow_redirects=False)
