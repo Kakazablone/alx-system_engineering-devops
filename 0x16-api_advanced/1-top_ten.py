@@ -9,7 +9,8 @@ def top_ten(subreddit):
     10 hot posts listed for a given subreddit
     """
     if subreddit is None or not isinstance(subreddit, str):
-        print("None")
+            print("None")
+            exit
     user_agent = {'User-agent': 'VICTORY'}
     params = {'limit': 10}
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
@@ -22,6 +23,7 @@ def top_ten(subreddit):
 
         for item in rqd_info:
             print(item.get('data').get('title'))
+            exit
 
     except Exception as e:
         print("Error:", e)
