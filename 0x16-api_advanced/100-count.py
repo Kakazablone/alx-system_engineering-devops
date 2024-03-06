@@ -2,15 +2,17 @@
 '''Module that tests out the Reddit API'''
 import requests
 
+
 def count_words(subreddit, word_list, after=None, count=None):
-    """recursive function that queries the Reddit API, parses the title of
-    all hot articles, and prints a sorted count of given keywords 
+    """Recursive function that queries the Reddit API, parses the title of
+    all hot articles, and prints a sorted count of given keywords
     """
     if after is None:
         count = {word.lower(): 0 for word in word_list}
 
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    response = requests.get(url, params={'after': after}, headers={'user-agent': 'VICTORY'})
+    response = requests.get(url, params={'after': after},
+                            headers={'user-agent': 'VICTORY'})
 
     if response.status_code == 200:
         data = response.json()
