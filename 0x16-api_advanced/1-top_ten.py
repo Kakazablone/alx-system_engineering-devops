@@ -1,31 +1,28 @@
 #!/usr/bin/python3
-"""
-prints the titles of the first 10 hot posts listed for a given subreddit
-"""
-from requests import get
+'''Module that tests out the Reddit API'''
+import requests
 
 
 def top_ten(subreddit):
+    """Queries the Reddit API and prints the titles of the first 10 hot
+    posts listed for a given subreddit
     """
-    function that queries the Reddit API and prints the titles of the first
-    10 hot posts listed for a given subreddit
-    """
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
+    headers = {'User-Agent': 'VICTORY'}
+    response = requests.get(url, headers=headers, allow_redirects=False)
 
-    if subreddit is None or not isinstance(subreddit, str):
+    if response.status_code == 200:
+        data = response.json()
+        for post in data['data']['children']:
+            print(post['data']['title'])
+    else:
         print("None")
 
-    user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
-    params = {'limit': 10}
-    url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
 
-    response = get(url, headers=user_agent, params=params)
-    results = response.json()
+if __name__ == '__main__':
+    import sys
 
-    try:
-        my_data = results.get('data').get('children')
-
-        for i in my_data:
-            print(i.get('data').get('title'))
-
-    except Exception:
-        print("None")
+    if len(sys.argv) < 2:
+        print("Please pass an argument for the subreddit to search.")
+    else:
+        top_ten(sys.argv[1])
