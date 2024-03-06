@@ -23,5 +23,6 @@ def top_ten(subreddit):
         for item in rqd_info:
             print(item.get('data').get('title'))
 
-    except Exception:
+    except Exception as e:
+        print("Error:", e)
         print("None")
