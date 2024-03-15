@@ -1,0 +1,1 @@
+Application server to serve main business logic for dynamic content

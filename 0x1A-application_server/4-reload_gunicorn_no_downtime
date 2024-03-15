@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+#Script will reload any running processes
+#gracefully
+
+if ! pgrep -f "gunicorn" > /dev/null; then
+    exit 1
+fi
+gunicorn_pid=$(pgrep -f "gunicorn")
+
+kill -HUP $gunicorn_pid
+echo "Gunicorn reloaded gracefully."
